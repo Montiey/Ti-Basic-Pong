@@ -1,0 +1,257 @@
+Lbl X
+SetUpEditor PNGHS
+CLASSIC
+If dim(⌊PNGHS)<1
+Then
+0→⌊PNGHS(1)
+End
+
+
+0→V
+0→P
+0→M
+0→H
+1→C
+1→X
+1→Y
+1→D
+1→E
+0→F
+
+ClrHome
+Lbl M
+Menu("Welcome to Pong!","Play",S,"Quit",E,"Highscores",H,"Clear Scores",W
+
+
+
+
+
+Lbl S
+While 1
+F+1→F
+
+Output(1,1,":"
+Output(1,3,"  "
+Output(1,2,V
+
+
+
+
+
+
+
+
+
+
+If V>M
+Then
+V→M
+End
+
+
+
+
+If V<0
+Then
+0→V
+ClrHome
+Disp "You loose!"
+
+
+
+
+If M>⌊PNGHS(dim(⌊PNGHS))
+Then
+
+M→H
+H→⌊PNGHS(dim(⌊PNGHS)+1
+Disp "New Highscore!"
+Disp H
+Pause 
+Goto X
+
+Else
+Disp "Highscore:"
+Disp H
+Pause 
+Goto X
+End
+
+
+
+
+End
+
+
+
+
+If P=45
+Then
+Menu("Choose","Continue",C,"Quit",M
+Lbl C
+End
+
+
+
+
+
+
+
+
+
+If F≥2
+Then
+0→F
+
+X→D
+If A=0
+Then
+X+1→X
+Else
+X-1→X
+End
+
+Y→E
+If B=0
+Then
+Y+1→Y
+Else
+Y-1→Y
+End
+
+If X>16
+Then
+15→X
+1→A
+End
+
+If X<1
+Then
+2→X
+0→A
+End
+
+If Y=8
+Then
+If X=C or X=C+1 or X=C+2
+Then
+V+1→V
+Output(1,2,"   "
+Output(1,1,":"
+Output(1,2,V
+Else
+V-2→V
+End
+End
+
+If Y>8
+Then
+7→Y
+1→B
+End
+
+If Y<1
+Then
+2→Y
+0→B
+End
+
+Output(Y,X,"O"
+Output(E,D," "
+End
+
+
+
+
+
+
+getKey→P
+
+If P=26 and C<14
+Then
+Output(8,C," "
+C+1→C
+End
+
+If P=24 and C>1
+Then
+Output(8,C+2," "
+C-1→C
+End
+
+
+
+If Y=8
+Then
+
+
+If X=C
+Then
+Output(8,C,"O__"
+End
+
+If X=C+1
+Then
+Output(8,C,"_O_"
+End
+
+If X=C+2
+Then
+Output(8,C,"__O"
+End
+
+If X≠C and X≠C+1 and X≠C+2
+Then
+Output(8,C,"___"
+End
+
+
+
+Else
+Output(8,C,"___"
+End
+
+
+
+
+
+
+
+End
+
+Lbl W
+Menu("Are you sure?","Clear scores",K,"Back",M
+Lbl K
+0→dim(⌊PNGHS
+ClrHome
+Output(8,1,"Highscores Reset"
+Pause 
+Goto X
+
+Lbl H
+Output(8,1,"Leaderboards"
+
+0→I
+For(I,1,dim(⌊PNGHS))
+
+If I≤7
+Then
+Output(I,1,":"
+Output(I,2,⌊PNGHS(I)
+End
+
+End
+
+Pause 
+Goto X
+
+
+
+Lbl E
+SetUpEditor 
+MATHPRINT
+Stop
+
+
+Disp "Something's gone terribly wrong."
+Pause 
