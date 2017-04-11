@@ -2,7 +2,9 @@
 It's Pong! Except single player, and crappy.
 
 -Logs highscores
+
 -Optimized for mathprint-capable devices
+
 -Optimized to clean up after itself!
 
 
